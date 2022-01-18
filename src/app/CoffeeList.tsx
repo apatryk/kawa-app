@@ -17,6 +17,7 @@ export const CoffeeList = () => {
     })();
   }, [response]);
 
+<<<<<<< HEAD
   if (!loaded) {
     return <Spin size="large" />;
   }
@@ -33,4 +34,23 @@ export const CoffeeList = () => {
       />
     </>
   );
+=======
+  if (loaded == true) {
+    return (
+      <>
+        <List
+          bordered
+          dataSource={response}
+          renderItem={(item) => (
+            <List.Item>
+              {item.id} {item.roastery} {item.name}
+            </List.Item>
+          )}
+        />
+      </>
+    );
+  } else {
+    return <Spin size="large" />;
+  }
+>>>>>>> Add and receive coffee data to and from server
 };
