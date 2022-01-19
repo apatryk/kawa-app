@@ -1,4 +1,3 @@
-import "antd/dist/antd.css";
 import { Button, Form, Input } from "antd";
 import { addCoffee, Values } from "../lib/coffee";
 
