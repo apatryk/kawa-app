@@ -1,20 +1,23 @@
-
+import { Spin } from "antd";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { getCoffeeById } from "../lib/coffee";
+import { axiosErrors } from "../lib/axiosErrors";
+import { getCoffeeById, Values } from "../lib/coffee";
 
 export const Coffee = () => {
-  const [result, setResult] = useState<any>([]);
-  let params = useParams();
-
+  const [result, setResult] = useState<Values | null>(null);
+  let params = useParams<{ coffeeId: string | undefined }>();
+  axiosErrors();
   useEffect(() => {
     (async () => {
       const response = await getCoffeeById(params.coffeeId);
       setResult(response.data);
     })();
   }, []);
-
+  if (!result) {
+    return <Spin size="large" />;
+  }
   return (
     <>
       <h2>ID number: {result.id}</h2>

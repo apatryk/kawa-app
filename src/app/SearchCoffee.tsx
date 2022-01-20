@@ -1,16 +1,16 @@
-import { AutoComplete } from 'antd';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { AutoComplete } from "antd";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { getCoffee } from '../lib/coffee';
-import { Option } from '../lib/option';
+import { getCoffee } from "../lib/coffee";
+import { Option } from "../lib/option";
 
 export const SearchCoffee = () => {
   const [options, setOptions] = useState<Array<Option>>([]);
   const navigate = useNavigate();
   const onSelectCoffee = (id: number) => {
     navigate(`/coffee/${id}`);
-  }
+  };
 
   const coffeeSearch = async (value: string) => {
     if (!value) {
