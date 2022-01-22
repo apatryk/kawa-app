@@ -1,13 +1,26 @@
 import "./App.css";
+import "antd/dist/antd.css";
 
+import { Route, Routes } from "react-router-dom";
+
+import { NotFoundPage } from "./app/404";
 import { AddCoffee } from "./app/AddCoffee";
+import { Coffee } from "./app/Coffee";
 import { CoffeeList } from "./app/CoffeeList";
+import { SearchCoffee } from "./app/SearchCoffee";
 
 function App() {
   return (
     <>
-      <AddCoffee />
-      <CoffeeList />
+      <Routes>
+        <Route path="addcoffee" element={<AddCoffee />} />
+        <Route path="listcoffee" element={<CoffeeList />} />
+        <Route path="/" element={<SearchCoffee />} />
+        <Route path="404" element={<NotFoundPage />} />
+        <Route path="coffee" element={<Coffee />}>
+          <Route path=":coffeeId" element={<Coffee />} />
+        </Route>
+      </Routes>
     </>
   );
 }

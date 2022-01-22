@@ -1,17 +1,15 @@
-import 'antd/dist/antd.css';
+import { List, Spin } from "antd";
+import { useEffect, useState } from "react";
 
-import { List, Spin } from 'antd';
-import { useEffect, useState } from 'react';
-
-import { getCoffee } from '../lib/coffee';
+import { getCoffee, Values } from "../lib/coffee";
 
 export const CoffeeList = () => {
-  const [response, setResponse] = useState<any[]>([]);
+  const [response, setResponse] = useState<Array<Values>>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     (async () => {
-      const result = await getCoffee;
+      const result = await getCoffee();
       setResponse(result.data);
       setLoaded(true);
     })();
@@ -20,6 +18,7 @@ export const CoffeeList = () => {
   if (!loaded) {
     return <Spin size="large" />;
   }
+
   return (
     <>
       <List
