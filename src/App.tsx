@@ -6,7 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import { NotFoundPage } from "./app/404";
 import { AddCoffee } from "./app/AddCoffee";
 import { Coffee } from "./app/Coffee";
+
 import { MainPage } from "./app/MainPage";
+
 
 function App() {
   return (
