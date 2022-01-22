@@ -1,4 +1,5 @@
 import { AutoComplete } from "antd";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,14 +26,12 @@ export const SearchCoffee = () => {
   };
 
   return (
-    <>
-      <AutoComplete
-        style={{ width: 200 }}
-        options={options}
-        onSearch={coffeeSearch}
-        onSelect={onSelectCoffee}
-        placeholder="input here"
-      ></AutoComplete>
-    </>
+    <AutoComplete
+      style={{ width: 200 }}
+      options={options}
+      onSearch={coffeeSearch}
+      onSelect={onSelectCoffee}
+      placeholder="Search your coffee here!"
+    />
   );
 };

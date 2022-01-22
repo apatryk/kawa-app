@@ -1,5 +1,6 @@
 import { Button, Form, Input } from "antd";
 import { addCoffee, Values } from "../lib/coffee";
+import { NavBar } from "./NavBar";
 
 export const AddCoffee = () => {
   const onFinish = (values: Values) => {
