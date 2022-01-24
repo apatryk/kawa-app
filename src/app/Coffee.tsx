@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { axiosErrors } from "../lib/axiosErrors";
-import { getCoffeeById, Values } from "../lib/coffee";
+import { getCoffeeById, Coffee as CoffeeType } from "../lib/coffee";
 
 export const Coffee = () => {
-  const [result, setResult] = useState<Values | null>(null);
+  const [result, setResult] = useState<CoffeeType | null>(null);
   let params = useParams<{ coffeeId: string | undefined }>();
   axiosErrors();
   useEffect(() => {

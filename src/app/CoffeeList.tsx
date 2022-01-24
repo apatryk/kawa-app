@@ -1,10 +1,10 @@
 import { List, Spin } from "antd";
 import { useEffect, useState } from "react";
 
-import { getCoffee, Values } from "../lib/coffee";
+import { getCoffee, Coffee } from "../lib/coffee";
 
 export const CoffeeList = () => {
-  const [response, setResponse] = useState<Array<Values>>([]);
+  const [response, setResponse] = useState<Array<Coffee>>([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

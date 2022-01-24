@@ -12,9 +12,10 @@ export const NavBar = () => {
   return (
     <>
       <Layout>
-        <Header className="header">
+        <Header>
           <div
             style={{
+              cursor: "pointer",
               float: "left",
               width: "120px",
               height: "31px",

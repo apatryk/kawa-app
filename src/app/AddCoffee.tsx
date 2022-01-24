@@ -1,8 +1,8 @@
-import { Button, Form, Input } from "antd";
-import { addCoffee, Values } from "../lib/coffee";
+import { Button, Checkbox, Form, Input, Radio, Select, Slider } from "antd";
+import { addCoffee, CoffeeAddFormValues } from "../lib/coffee";
 
 export const AddCoffee = () => {
-  const onFinish = (values: Values) => {
+  const onFinish = (values: CoffeeAddFormValues) => {
     addCoffee(values);
   };
 
@@ -10,16 +10,38 @@ export const AddCoffee = () => {
     console.log("Failed:", errorInfo);
   };
 
+  const sliderTipFormatter = (value: number | undefined) => {
+    switch (value) {
+      case 0:
+        return `100% Arabica`;
+      case 100:
+        return `${value}% Robusta`;
+      default:
+        return `${100 - value!}% Arabica | ${value}% Robusta`;
+    }
+  };
+
+  const coffeeRoastOptions = ["Light", "Medium", "Dark"];
+
+  const coffeeDestinationList = [
+    "drip",
+    "drip&espresso",
+    "espresso",
+    "coffeeCapsule",
+  ];
+
+  const { Option } = Select;
+
   return (
     <>
       <Form
         name="addcoffeform"
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 8 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
       >
         <Form.Item
           label="Coffee Roastery"
@@ -36,7 +58,48 @@ export const AddCoffee = () => {
         >
           <Input />
         </Form.Item>
-
+        <Form.Item name="type" label="Coffee Type">
+          <Radio.Group>
+            <Radio value="coffeeBeans">coffee beans</Radio>
+            <Radio value="coffeeGround">ground coffee</Radio>
+            <Radio value="coffeeInstant">instant coffee</Radio>
+            <Radio value="coffeeCapsule">capsule coffee</Radio>
+          </Radio.Group>
+        </Form.Item>
+        <Form.Item name="destination" label="Coffee Destination">
+          <Checkbox.Group options={coffeeDestinationList} />
+        </Form.Item>
+        <Form.Item name="roast" label="Coffee Roast">
+          <Radio.Group
+            options={coffeeRoastOptions}
+            optionType="button"
+            buttonStyle="solid"
+          />
+        </Form.Item>
+        <Form.Item name="method" label="Coffee Processing Method">
+          <Select placeholder="Coffee Processing Method">
+            <Option value="washed">Washed</Option>
+            <Option value="natural">Natural</Option>
+          </Select>
+        </Form.Item>
+        <Form.Item name="species" label="Coffee Species">
+          <Slider
+            min={0}
+            max={100}
+            step={5}
+            tipFormatter={sliderTipFormatter}
+            marks={{
+              0: "Arabica",
+              100: "Robusta",
+            }}
+          />
+        </Form.Item>
+        <Form.Item name="origin" label="Origin Of Coffee">
+          <Select placeholder="Origin Of Coffee">
+            <Option value="kenya">Kenya</Option>
+            <Option value="brazil">Brazil</Option>
+          </Select>
+        </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
             Submit

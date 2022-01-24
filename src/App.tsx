@@ -13,14 +13,22 @@ function App() {
   return (
     <>
       <NavBar />
-      <Routes>
-        <Route path="addcoffee" element={<AddCoffee />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="404" element={<NotFoundPage />} />
-        <Route path="coffee" element={<Coffee />}>
-          <Route path=":coffeeId" element={<Coffee />} />
-        </Route>
-      </Routes>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "50px 0 0 0",
+        }}
+      >
+        <Routes>
+          <Route path="addcoffee" element={<AddCoffee />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="404" element={<NotFoundPage />} />
+          <Route path="coffee" element={<Coffee />}>
+            <Route path=":coffeeId" element={<Coffee />} />
+          </Route>
+        </Routes>
+      </div>
     </>
   );
 }
