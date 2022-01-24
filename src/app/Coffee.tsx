@@ -14,7 +14,7 @@ export const Coffee = () => {
       const response = await getCoffeeById(params.coffeeId);
       setResult(response.data);
     })();
-  }, []);
+  }, [params.coffeeId]);
   if (!result) {
     return <Spin size="large" />;
   }
