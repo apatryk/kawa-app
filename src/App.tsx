@@ -8,6 +8,8 @@ import { AddCoffee } from "./app/AddCoffee";
 import { Coffee } from "./app/Coffee";
 import { MainPage } from "./app/MainPage";
 import { NavBar } from "./app/NavBar";
+import { Register } from "./app/Register";
+import { Login } from "./app/Login";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="addcoffee" element={<AddCoffee />} />
           <Route path="/" element={<MainPage />} />
           <Route path="404" element={<NotFoundPage />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           <Route path="coffee" element={<Coffee />}>
             <Route path=":coffeeId" element={<Coffee />} />
           </Route>

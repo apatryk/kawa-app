@@ -35,14 +35,14 @@ export const addCoffee = (values: CoffeeAddFormValues) => {
 
 export const getCoffee = async (searchValue?: string) => {
   return await axios.get<Array<Coffee>>(
-    "https://my-json-server.typicode.com/apatryk/json-server/coffees?q=" +
+    "http://localhost:4000/coffees?q=" +
       searchValue
   );
 };
 
 export const getCoffeeById = async (searchId: string | undefined) => {
   return await axios.get<Coffee>(
-    "https://my-json-server.typicode.com/apatryk/json-server/coffees/" +
+    "http://localhost:4000/coffees/" +
       searchId
   );
 };
