@@ -1,6 +1,6 @@
 import Layout, { Header } from "antd/lib/layout/layout";
 import { CoffeeOutlined } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Button, Menu } from "antd";
 import { SearchCoffee } from "./SearchCoffee";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,45 @@ export const NavBar = () => {
   const navigate = useNavigate();
   const redirectToMainPage = () => {
     navigate("/");
+  };
+
+  const LoginSingupButton = () => {
+    if (localStorage.getItem("access_token")) {
+      return (
+        <Button
+          style={{
+            float: "right",
+            height: "auto",
+            marginLeft: "auto",
+          }}
+          type="primary"
+          onClick={logoutForm}>
+          Logout
+        </Button>
+      )
+    } else {
+      return (
+        <Button
+          style={{
+            float: "right",
+            height: "auto",
+            marginLeft: "auto",
+          }}
+          type="primary"
+          onClick={redirectToLogin}>
+          Login
+        </Button>)
+
+    }
+  }
+
+  const logoutForm = () => {
+    localStorage.clear();
+    window.location.reload()
+  }
+
+  const redirectToLogin = () => {
+    navigate("/login");
   };
   return (
     <>
@@ -32,12 +71,13 @@ export const NavBar = () => {
               style={{
                 float: "left",
                 height: "auto",
-                margin: "0 24px 0 0",
+                margin: "0 0 0 0",
                 color: "#ffffff",
               }}
             >
               <SearchCoffee />
             </div>
+            <LoginSingupButton />
           </Menu>
         </Header>
       </Layout>
