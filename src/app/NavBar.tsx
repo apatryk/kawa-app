@@ -11,7 +11,7 @@ export const NavBar = () => {
   };
 
   const LoginSingupButton = () => {
-    if (localStorage.getItem("user_name")) {
+    if (localStorage.getItem("access_token")) {
       return (
         <Button
           style={{
