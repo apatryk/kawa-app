@@ -1,7 +1,7 @@
-import { Card, List, Rate, Spin } from "antd";
-import { useEffect, useState } from "react";
+import { List, Rate, Spin } from 'antd';
+import { useEffect, useState } from 'react';
 
-import { getComments, CommentAddForm } from "../lib/comment";
+import { CommentAddForm, getComments } from '../lib/comment';
 
 export const CommentList = (props: any) => {
     const [response, setResponse] = useState<Array<CommentAddForm>>();
@@ -11,17 +11,15 @@ export const CommentList = (props: any) => {
         (async () => {
             const result = await getComments(props);
             setResponse(result.data);
-            console.log(result.data)
             setLoaded(true);
         })();
-    }, []);
+    }, [response]);
 
     if (!loaded) {
         return <Spin size="large" />;
     }
 
     return (
-        <>
             <List
                 dataSource={response}
                 renderItem={item => (
@@ -34,6 +32,5 @@ export const CommentList = (props: any) => {
                     </List.Item>
                 )}
             />
-        </>
     );
 };

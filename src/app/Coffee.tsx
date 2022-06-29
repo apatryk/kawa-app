@@ -22,7 +22,7 @@ export const Coffee = () => {
   }
   return (
     <div style={{display: "flex", flexDirection: "column"}}>
-      <h2>ID: {result.id}</h2>
+      <h2>ID: {result._id}</h2>
       <h2>Coffee name: {result.name}</h2>
       <h2>Coffee roastery: {result.roastery}</h2>
       <h2>Coffee origin: {result.origin}</h2>
@@ -31,8 +31,8 @@ export const Coffee = () => {
       <h2>Coffee species: {result.species}</h2>
       <h2>Coffee type: {result.type}</h2>
       <h2>Coffee destination: {result.destination}</h2>
-      <CommentForm data={result.id}/>
-      <CommentList data={result.id}/>
+      <CommentForm data={result._id}/>
+      <CommentList data={result._id}/>
     </div>
   );
 };

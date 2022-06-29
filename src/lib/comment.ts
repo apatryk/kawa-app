@@ -10,13 +10,15 @@ export type CommentAddForm = {
     id: number;
     email: string;
 };
+export type CoffeeId = {
+    data: number;
+};
 
-export const addComment = (values: CommentAddForm, coffeeId: any) => {
-    axios.post('http://localhost:4000/660/coffees/' + coffeeId.data + '/comments', {
+export const addComment = (values: CommentAddForm, coffeeId: CoffeeId) => {
+    axios.post('http://localhost:4000/comments/', {
         comment: values.comment,
         rate: values.rate,
         coffeeId: coffeeId.data,
-        email: localStorage.getItem("email")
     })
         .then(response => {
             console.log(response);
@@ -27,5 +29,5 @@ export const addComment = (values: CommentAddForm, coffeeId: any) => {
 };
 
 export const getComments = async (coffeeId: any) => {
-    return await axios.get('http://localhost:4000/660/coffees/' + coffeeId.data + '/comments');
+    return await axios.get('http://localhost:4000/comments/' + coffeeId.data );
 };

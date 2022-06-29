@@ -11,7 +11,7 @@ export type CoffeeAddFormValues = {
   destination: string | null;
 };
 
-export type Coffee = { id: number } & CoffeeAddFormValues;
+export type Coffee = { _id: number } & CoffeeAddFormValues;
 
 export const addCoffee = (values: CoffeeAddFormValues) => {
   axios
@@ -35,7 +35,7 @@ export const addCoffee = (values: CoffeeAddFormValues) => {
 
 export const getCoffee = async (searchValue?: string) => {
   return await axios.get<Array<Coffee>>(
-    "http://localhost:4000/coffees?q=" +
+    "http://localhost:4000/coffees?searchCoffee=" +
       searchValue
   );
 };

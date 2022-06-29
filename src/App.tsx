@@ -23,12 +23,12 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="addcoffee" element={<AddCoffee />} />
-          <Route path="/" element={<MainPage />} />
-          <Route path="404" element={<NotFoundPage />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="coffee" element={<Coffee />}>
+          <Route index element={<MainPage />} />
+          <Route path="/addcoffee" element={<AddCoffee />} />
+          <Route path="/404" element={<NotFoundPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/coffee" element={<Coffee />}>
             <Route path=":coffeeId" element={<Coffee />} />
           </Route>
         </Routes>

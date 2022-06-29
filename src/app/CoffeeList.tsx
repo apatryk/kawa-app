@@ -26,7 +26,7 @@ export const CoffeeList = () => {
         dataSource={response}
         renderItem={(item) => (
           <List.Item>
-            {item.id} {item.roastery} {item.name}
+            {item._id} {item.roastery} {item.name}
           </List.Item>
         )}
       />
